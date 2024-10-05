@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
+import 'app/module/form/model/form_model.dart';
 import 'app/module/form/view/email_campaign_screen.dart';
 import 'app/utils/extentions.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+  await Hive.openBox<FormModel>('form_steps_box');
+  Hive.registerAdapter(FormModelAdapter());
   runApp(
     const ProviderScope(
       child: MyApp(),

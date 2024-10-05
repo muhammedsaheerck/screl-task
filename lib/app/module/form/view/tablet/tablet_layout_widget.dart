@@ -9,7 +9,7 @@ import '../../model/form_steps_model.dart';
 import '../../view model/email_campaign_provider.dart';
 import '../../widgets/drawer_widget.dart';
 import '../../widgets/heading_widget.dart';
-import '../../widgets/text_and_switch_row_widget.dart';
+import '../../widgets/home_screen_customer_choose_section.dart';
 
 class TabletLayoutWidget extends ConsumerWidget {
   const TabletLayoutWidget({
@@ -31,7 +31,7 @@ class TabletLayoutWidget extends ConsumerWidget {
       ),
       drawer: DrawerWidget(formSteps: formSteps),
       body: Container(
-        margin: const EdgeInsets.all(16),
+        margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
         height: Responsive.height * 100,
         width: Responsive.width * 100,
         child: SingleChildScrollView(
@@ -132,63 +132,7 @@ class TabletLayoutWidget extends ConsumerWidget {
                     ),
                   ],
                 ),
-                const SizeBoxH(15),
-                Divider(
-                  color: AppConstants.appGreyColor.withOpacity(.4),
-                  thickness: 1,
-                ),
-                const SizeBoxH(15),
-                TextAndSwitchButtonWidget(
-                    isSwitched: ref.watch(formProvider).isOncePerCustomer,
-                    onChanged: (p0) {
-                      ref.read(formProvider).checkIsOncePerCustomer();
-                    },
-                    text: "Run only once per customer"),
-                TextAndSwitchButtonWidget(
-                    isSwitched: ref.watch(formProvider).isCustomAudience,
-                    onChanged: (p0) {
-                      ref.read(formProvider).checkIsCustomAudience();
-                    },
-                    text: "Custom audience"),
-                const SizeBoxH(10),
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      const TextSpan(
-                        text: 'You can set up a ',
-                        style: TextStyle(
-                            color:
-                                AppConstants.appGreyColor2, // First word color
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      TextSpan(
-                        text:
-                            'custom domain or connect your email service provider ',
-                        style: TextStyle(
-                            color: AppConstants.appPrimaryLightColor
-                                .withOpacity(.6), // First word color
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      const TextSpan(
-                        text: 'to change this',
-                        style: TextStyle(
-                            color:
-                                AppConstants.appGreyColor2, // First word color
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                  textAlign: TextAlign.center, // Align the text to center
-                ),
-                const SizeBoxH(15),
-                Divider(
-                  color: AppConstants.appGreyColor.withOpacity(.4),
-                  thickness: 1,
-                ),
-                const SizeBoxH(15),
+                const FormScreenCustomerChooseSectionWidget(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

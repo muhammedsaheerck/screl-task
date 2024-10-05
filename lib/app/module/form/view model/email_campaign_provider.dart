@@ -67,7 +67,7 @@ class EmailCampaignProvider extends ChangeNotifier {
   );
 
   // Method to update the status of a form step at a given index
-  void updateStepStatus(int index) {
+  void updateStepStatus(int index, BuildContext context) {
     if (index >= 0 && index < formSteps.length) {
       subjectController.clear();
       previewTextController.clear();
@@ -82,6 +82,17 @@ class EmailCampaignProvider extends ChangeNotifier {
       } else {
         nextStep = formSteps[0]; // No next step available
       }
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: Colors.green,
+          content: CommonTextWidget(
+            text: 'Successfully Updated!',
+            fontSize: 16,
+            color: AppConstants.appWhiteColor,
+          ),
+          duration: Duration(seconds: 3),
+        ),
+      );
 
       notifyListeners(); // Notify listeners to rebuild the UI
     }
@@ -90,15 +101,15 @@ class EmailCampaignProvider extends ChangeNotifier {
   void nextStepFun(BuildContext context) {
     if (isCustomAudience == true || isOncePerCustomer == true) {
       if (nextStep?.itemId == 1) {
-        updateStepStatus(0);
+        updateStepStatus(0, context);
       } else if (nextStep?.itemId == 2) {
-        updateStepStatus(1);
+        updateStepStatus(1, context);
       } else if (nextStep?.itemId == 3) {
-        updateStepStatus(2);
+        updateStepStatus(2, context);
       } else if (nextStep?.itemId == 4) {
-        updateStepStatus(3);
+        updateStepStatus(3, context);
       } else if (nextStep?.itemId == 5) {
-        updateStepStatus(4);
+        updateStepStatus(4, context);
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -114,6 +125,8 @@ class EmailCampaignProvider extends ChangeNotifier {
       );
     }
   }
+
+//Save Draft Functionality
 }
 
 final formProvider = ChangeNotifierProvider<EmailCampaignProvider>(

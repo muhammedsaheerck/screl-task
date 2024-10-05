@@ -70,7 +70,7 @@ class DrawerWidget extends StatelessWidget {
                         ? Responsive.text * .8
                         : Responsive.text * 1.4,
                     fontWeight: FontWeight.bold),
-                SizeBoxH(Responsive.height * 2),
+                SizeBoxH(Responsive.height * 1),
                 CommonButton(
                   ontap: () {},
                   height: 42,
