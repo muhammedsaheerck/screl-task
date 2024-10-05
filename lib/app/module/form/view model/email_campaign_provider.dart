@@ -73,6 +73,8 @@ class EmailCampaignProvider extends ChangeNotifier {
       previewTextController.clear();
       fromNameController.clear();
       fromEmailController.clear();
+      _isCustomAudience = false;
+      _isOncePerCustomer = false;
       // Update the current step status to completed
       formSteps[index] = formSteps[index].copyWith(status: Status.completed);
 
