@@ -113,6 +113,8 @@ class TabletLayoutWidget extends ConsumerWidget {
                         ),
                         const SizeBoxH(5),
                         CustomTextFormFieldWidget(
+                          keyboardType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.done,
                           width: Responsive.width * 45,
                           controller:
                               ref.read(formProvider).fromEmailController,

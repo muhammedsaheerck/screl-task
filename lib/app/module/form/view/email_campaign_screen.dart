@@ -146,6 +146,8 @@ class DesktopLayoutWidget extends ConsumerWidget {
                                 ),
                                 const SizeBoxH(5),
                                 CustomTextFormFieldWidget(
+                                  keyboardType: TextInputType.emailAddress,
+                                  textInputAction: TextInputAction.done,
                                   width: MediaQuery.of(context).size.width * .2,
                                   controller: ref
                                       .read(formProvider)

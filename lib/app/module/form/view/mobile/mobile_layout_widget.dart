@@ -101,6 +101,8 @@ class MobileLayoutWidget extends ConsumerWidget {
                 ),
                 const SizeBoxH(5),
                 CustomTextFormFieldWidget(
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.done,
                   controller: ref.read(formProvider).fromEmailController,
                   hintText: "Anne@example.com",
                   validator: (value) {

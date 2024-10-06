@@ -159,6 +159,8 @@ class CustomTextFormFieldWidget extends StatelessWidget {
   final double? width;
   final int? maxLines;
   final int? maxLength;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
   final String? Function(String?)? validator;
   const CustomTextFormFieldWidget({
     super.key,
@@ -168,6 +170,8 @@ class CustomTextFormFieldWidget extends StatelessWidget {
     this.maxLength,
     this.validator,
     this.width,
+    this.keyboardType,
+    this.textInputAction,
   });
 
   @override
@@ -180,6 +184,8 @@ class CustomTextFormFieldWidget extends StatelessWidget {
         onTapOutside: (event) {
           FocusScope.of(context).unfocus();
         },
+        textInputAction: textInputAction ?? TextInputAction.next,
+        keyboardType: keyboardType ?? TextInputType.text,
         validator: validator,
         maxLines: maxLines,
         maxLength: maxLength,
